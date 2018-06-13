@@ -2,9 +2,10 @@ package fr.pizzeria.service;
 
 import java.util.Scanner;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.CategoriePizzaException;
-import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -13,9 +14,8 @@ public class AjouterPizzaService extends MenuService {
 
 	public AjouterPizzaService(IPizzaDao pizzaDao) {
 		super(pizzaDao);
-		// TODO Auto-generated constructor stub
 	}
-	public void executeUC(Scanner scanner) {
+	public void executeUC(Scanner scanner) throws SavePizzaException {
 		System.out.println("Ajout d’une nouvelle pizza");
 
 		try {
@@ -25,8 +25,14 @@ public class AjouterPizzaService extends MenuService {
 			System.out.println("Veuillez saisir le nom (sans espace) :");
 			String newLibelle = scanner.nextLine();
 			System.out.println("Veuillez saisir le prix :");
+			
+			// utilisation de la librairie NumberUtils pour remplacer par 0 si l'utilisateur n'a rien saisi ou si ce n'est pas un chiffre
+			String prixStr = scanner.nextLine();
+			if (!NumberUtils.isCreatable(prixStr)) {
+				throw new SavePizzaException("LE PRIX DOIT ETRE un nombre.");
+			}
 			// conversion en double de la réponse string du Scanner
-			double newPrix = Double.parseDouble(scanner.nextLine());
+			double newPrix = Double.parseDouble(prixStr);
 
 			// ajouter une catégorie de pizza avec une réponse numérique
 			try  {
