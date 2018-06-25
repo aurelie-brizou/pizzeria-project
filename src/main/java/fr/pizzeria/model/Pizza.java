@@ -8,10 +8,14 @@ import fr.pizzeria.utils.ToString;
 public class Pizza implements Comparable<Pizza>{
 	// attributs
 	public int id;
-	@ToString(upperCase=true)
+	
+	@ToString(upperCase=true, suffixe=" -> ")
 	public String code;
-	@ToString
+	
+	@ToString(suffixe=", ")
 	public String libelle;
+	
+	@ToString(suffixe="€")
 	public double prix;
 	public static int currentId =+ 1;
 	

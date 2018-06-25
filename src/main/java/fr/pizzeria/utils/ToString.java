@@ -7,5 +7,6 @@ import java.lang.annotation.RetentionPolicy;
 public @interface ToString {
 
 	boolean upperCase() default false;
-
+	String prefixe() default "";
+	String suffixe() default "";
 }

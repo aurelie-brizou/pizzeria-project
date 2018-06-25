@@ -14,6 +14,8 @@ public class MenuServiceFactory {
 			return new ModifierPizzaService(pizzaDao);
 		case 4:
 			return new SupprimerPizzaService(pizzaDao);
+		case 5: 
+			return new InitialiseBdd(pizzaDao);
 		}
 		return null;
 	}

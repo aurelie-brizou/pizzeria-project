@@ -15,4 +15,5 @@ public interface IPizzaDao {
 	void deletePizza(String codePizza) throws DeletePizzaException;
 	Pizza findPizzaByCode(String codePizza);
 	boolean pizzaExists(String codePizza);
+	void initializeDb();
 }

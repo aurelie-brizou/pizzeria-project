@@ -20,10 +20,10 @@ public class SuperLogger {
 					continue;
 				} else if (annot.upperCase()) {
 
-					toReturn += field.get(o).toString().toUpperCase();
+					toReturn += annot.prefixe().toUpperCase()+field.get(o).toString().toUpperCase()+annot.suffixe().toUpperCase();
 
 				} else {
-					toReturn += field.get(o).toString();
+					toReturn += annot.prefixe()+field.get(o).toString()+annot.suffixe();
 				}
 			}
 

@@ -19,7 +19,7 @@ public class PizzaMemDao implements IPizzaDao {
 		// creation liste pizza
 
 		pizzaList.add(new Pizza("PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
-		pizzaList.add(new Pizza("REIN", "La Reine", 11.50, CategoriePizza.VIANDE));
+		pizzaList.add(new Pizza("REIN", "La reine", 11.50, CategoriePizza.VIANDE));
 		pizzaList.add(new Pizza("FRO", "La 4 fromages", 12.00, CategoriePizza.SANS_VIANDE));
 		pizzaList.add(new Pizza("CAN", "La cannibale", 12.50, CategoriePizza.VIANDE));
 		pizzaList.add(new Pizza("SAV", "La savoyarde", 13.00, CategoriePizza.SANS_VIANDE));
@@ -90,6 +90,11 @@ public class PizzaMemDao implements IPizzaDao {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void initializeDb() {
+		
 	}
 
 
