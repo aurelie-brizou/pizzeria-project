@@ -109,7 +109,6 @@ public class PizzaJdbcDao implements IPizzaDao {
 		Connection myConnection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
-		List<Pizza> pizzaList = new ArrayList<Pizza>();
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			myConnection = DriverManager.getConnection(jdbcProperties.getString("URL"),
@@ -127,7 +126,6 @@ public class PizzaJdbcDao implements IPizzaDao {
 			if (pizzaExists(pizza.code) == true) {
 				throw new SavePizzaException();
 			}
-			pizzaList.add(pizza);
 
 		} catch (ClassNotFoundException e) {
 
@@ -183,7 +181,6 @@ public class PizzaJdbcDao implements IPizzaDao {
 		Connection myConnection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
-		List<Pizza> pizzaList = new ArrayList<Pizza>();
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			myConnection = DriverManager.getConnection(jdbcProperties.getString("URL"),
@@ -199,18 +196,6 @@ public class PizzaJdbcDao implements IPizzaDao {
 			statement.setString(4, pizza.categoriePizza.name());
 			statement.setString(5, codePizza);
 			statement.executeUpdate();
-
-			for (Pizza pizza1 : pizzaList) {
-				if (pizza1.code.equals(codePizza)) {
-					// on écrase l'ancienne pizza = pizza1 par la nouvelle en
-					// paramètre = pizza et chacun de ses attributs
-					pizza1.code = pizza.code;
-					pizza1.id = pizza.id;
-					pizza1.libelle = pizza.libelle;
-					pizza1.prix = pizza.prix;
-					pizza1.categoriePizza = pizza.categoriePizza;
-				}
-			}
 
 		} catch (ClassNotFoundException e) {
 
@@ -264,7 +249,6 @@ public class PizzaJdbcDao implements IPizzaDao {
 		Connection myConnection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
-		List<Pizza> pizzaList = new ArrayList<Pizza>();
 
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -276,12 +260,6 @@ public class PizzaJdbcDao implements IPizzaDao {
 			statement = myConnection.prepareStatement("DELETE FROM PIZZAS WHERE CODE=?");
 			statement.setString(1, codePizza);
 			statement.executeUpdate();
-
-			// trouver la pizza avec code
-			Pizza pizzaASupprimer = findPizzaByCode(codePizza);
-
-			// supprimer la pizza de la liste
-			pizzaList.remove(pizzaASupprimer);
 
 		} catch (ClassNotFoundException e) {
 

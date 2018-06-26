@@ -52,7 +52,6 @@ public class PizzaMemDao implements IPizzaDao {
 			if (pizza1.code.equals(codePizza)) {
 				// on écrase l'ancienne pizza = pizza1 par la nouvelle en paramètre = pizza et chacun de ses attributs
 				pizza1.code = pizza.code;
-				pizza1.id = pizza.id;
 				pizza1.libelle = pizza.libelle;
 				pizza1.prix = pizza.prix;
 				pizza1.categoriePizza = pizza.categoriePizza;

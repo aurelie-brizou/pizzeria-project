@@ -6,6 +6,7 @@ import fr.pizzeria.service.MenuService;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaJdbcDao;
+import fr.pizzeria.dao.PizzaJpaDao;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.StockageException;
@@ -19,7 +20,7 @@ public class PizzeriaAdminConsoleApp {
 		// creation liste pizza
 
 		//IPizzaDao pizzaDao = new PizzaMemDao();
-		IPizzaDao pizzaDao = new PizzaJdbcDao();
+		IPizzaDao pizzaDao = new PizzaJpaDao();
 
 		// saisie utilisateur
 		Scanner questionUser = new Scanner(System.in);
